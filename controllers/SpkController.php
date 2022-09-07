@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Dashboard;
-use app\models\DashboardSearch;
+use app\models\Spk;
+use app\models\SpkSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DashboardController implements the CRUD actions for Dashboard model.
+ * SpkController implements the CRUD actions for Spk model.
  */
-class DashboardController extends Controller
+class SpkController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class DashboardController extends Controller
     }
 
     /**
-     * Lists all Dashboard models.
+     * Lists all Spk models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new DashboardSearch();
+        $searchModel = new SpkSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * Displays a single Dashboard model.
+     * Displays a single Spk model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,17 +61,17 @@ class DashboardController extends Controller
     }
 
     /**
-     * Creates a new Dashboard model.
+     * Creates a new Spk model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Dashboard();
+        $model = new Spk();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -83,7 +83,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * Updates an existing Dashboard model.
+     * Updates an existing Spk model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * Deletes an existing Dashboard model.
+     * Deletes an existing Spk model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class DashboardController extends Controller
     }
 
     /**
-     * Finds the Dashboard model based on its primary key value.
+     * Finds the Spk model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Dashboard the loaded model
+     * @return Spk the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Dashboard::findOne(['id' => $id])) !== null) {
+        if (($model = Spk::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

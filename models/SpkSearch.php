@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Dashboard;
+use app\models\Spk;
 
 /**
- * DashboardSearch represents the model behind the search form of `app\models\Dashboard`.
+ * SpkSearch represents the model behind the search form of `app\models\Spk`.
  */
-class DashboardSearch extends Dashboard
+class SpkSearch extends Spk
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class DashboardSearch extends Dashboard
     public function rules()
     {
         return [
-            [['id', 'prodi'], 'integer'],
-            [['nim', 'nama'], 'safe'],
+            [['id', 'keuntungan', 'penjualan', 'harga'], 'integer'],
+            [['nama_barang'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class DashboardSearch extends Dashboard
      */
     public function search($params)
     {
-        $query = Dashboard::find();
+        $query = Spk::find();
 
         // add conditions that should always apply here
 
@@ -59,11 +59,12 @@ class DashboardSearch extends Dashboard
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'prodi' => $this->prodi,
+            'keuntungan' => $this->keuntungan,
+            'penjualan' => $this->penjualan,
+            'harga' => $this->harga,
         ]);
 
-        $query->andFilterWhere(['like', 'nim', $this->nim])
-            ->andFilterWhere(['like', 'nama', $this->nama]);
+        $query->andFilterWhere(['like', 'nama_barang', $this->nama_barang]);
 
         return $dataProvider;
     }

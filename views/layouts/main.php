@@ -1,9 +1,9 @@
 <?php
 
-use app\assets\DashboardAsset;
+use app\assets\AppAsset;
 use yii\helpers\Url;
 
-DashboardAsset::register($this);
+AppAsset::register($this);
 $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,25 +1,22 @@
 <?php
 
-use app\models\Dashboard;
+use app\models\Spk;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\DashboardSearch $searchModel */
+/** @var app\models\SpkSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Dashboards';
+$this->title = 'Table Data';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="dashboard-index">
+<div class="spk-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Dashboard', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -30,12 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'nim',
-            'nama',
-            'prodi',
+            'nama_barang',
+            'keuntungan',
+            'penjualan',
+            'harga',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Dashboard $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Spk $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
