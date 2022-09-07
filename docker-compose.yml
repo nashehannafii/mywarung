@@ -1,9 +1,25 @@
 version: '2'
 services:
-  php:
-    image: yiisoftware/yii2-php:7.4-apache
+  databaseserver:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: nasheh
+      MYSQL_USER: nasheh
+      MYSQL_PASSWORD: bismillah
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      - ./:/app:delegated
+      - "/opt/mysql-data:/var/lib/mysql"
+  aplikasi:
+    build: .
+    # image: nashehannafii/mywarung
     ports:
-      - '8000:80'
+      - 8080:80
+    depends_on:
+      - databaseserver
+  # php:
+  #   image: yiisoftware/yii2-php:7.4-apache
+  #   volumes:
+  #     - ~/.composer-docker/cache:/root/.composer/cache:delegated
+  #     - ./:/app:delegated
+  #   ports:
+  #     - '8000:80'

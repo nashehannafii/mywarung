@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Spk;
-use app\models\SpkSearch;
+use app\models\Bobot;
+use app\models\BobotSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SpkController implements the CRUD actions for Spk model.
+ * BobotController implements the CRUD actions for Bobot model.
  */
-class SpkController extends Controller
+class BobotController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class SpkController extends Controller
     }
 
     /**
-     * Lists all Spk models.
+     * Lists all Bobot models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new SpkSearch();
+        $searchModel = new BobotSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class SpkController extends Controller
     }
 
     /**
-     * Displays a single Spk model.
+     * Displays a single Bobot model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class SpkController extends Controller
     }
 
     /**
-     * Creates a new Spk model.
+     * Creates a new Bobot model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Spk();
+        $model = new Bobot();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class SpkController extends Controller
     }
 
     /**
-     * Updates an existing Spk model.
+     * Updates an existing Bobot model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class SpkController extends Controller
     }
 
     /**
-     * Deletes an existing Spk model.
+     * Deletes an existing Bobot model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -116,27 +116,16 @@ class SpkController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionRekomendasi()
-    {
-        $searchModel = new SpkSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('rekomendasi', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
     /**
-     * Finds the Spk model based on its primary key value.
+     * Finds the Bobot model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Spk the loaded model
+     * @return Bobot the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Spk::findOne(['id' => $id])) !== null) {
+        if (($model = Bobot::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
